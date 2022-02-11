@@ -1,0 +1,28 @@
+Comment: Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of WhatsYourSign and imports it into Munki.
+Identifier: com.github.autopkg-jby-recipes.munki.WhatsYourSign
+ParentRecipe: com.github.autopkg-jby-recipes.download.WhatsYourSign
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: WhatsYourSign
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: WhatsYourSign adds a menu item to Finder.app. Simply right-, or control-click on any file to display its cryptographic signing information!
+    developer: Objective-See, LLC
+    display_name: WhatsYourSign
+    name: '%NAME%'
+    unattended_install: true
+
+Process:
+- Processor: DmgCreator
+  Arguments:
+    dmg_path: '%RECIPE_CACHE_DIR%/%NAME%.dmg'
+    dmg_root: '%RECIPE_CACHE_DIR%/%NAME%'
+
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%dmg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
