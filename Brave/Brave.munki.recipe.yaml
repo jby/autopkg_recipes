@@ -1,0 +1,44 @@
+Description: Downloads the latest version of Brave and imports it into Munki.
+Identifier: com.github.jby.munki.Brave
+ParentRecipe: com.github.jby.download.Brave
+MinimumVersion: '2.3'
+
+Input:
+  NAME: Brave
+  MUNKI_REPO_SUBDIR: 'apps/%amd_pathname%'
+  pkginfo:
+    catalogs:
+      - testing
+    description: The new Brave browser blocks ads and trackers that slow you down and invade your privacy. Discover a new way of thinking about how the web can work.
+    developer: Brave Software Inc.
+    display_name: '%NAME%'
+    name: '%amd_pathname%'
+    unattended_install: true
+    supported_architectures:
+      - 'x86_64'
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: '%amd_pathname%'
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+
+Input:
+  NAME: Brave
+  MUNKI_REPO_SUBDIR: 'apps/%arm_pathname%'
+  pkginfo:
+    catalogs:
+      - testing
+    description: The new Brave browser blocks ads and trackers that slow you down and invade your privacy. Discover a new way of thinking about how the web can work.
+    developer: Brave Software Inc.
+    display_name: '%NAME%'
+    name: '%arm_pathname%'
+    unattended_install: true
+    supported_architectures:
+      - 'arm64'
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: '%arm_pathname%'
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'

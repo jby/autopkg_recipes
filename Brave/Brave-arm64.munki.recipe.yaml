@@ -1,0 +1,26 @@
+Description: Downloads the latest version of Brave and imports it into Munki.
+Identifier: com.github.jby.munki.Brave-arm64
+ParentRecipe: com.github.jby.download.Brave
+MinimumVersion: '2.3'
+
+Input:
+  NAME: Brave
+  ARCHITECTURE: arm64
+  SPARKLE_FEED_URL: https://updates.bravesoftware.com/sparkle/Brave-Browser/stable-arm64/appcast.xml
+  MUNKI_REPO_SUBDIR: apps/%NAME%-%ARCHITECTURE%
+  pkginfo:
+    catalogs:
+      - testing
+    description: The new Brave browser blocks ads and trackers that slow you down and invade your privacy. Discover a new way of thinking about how the web can work.
+    developer: Brave Software Inc.
+    display_name: '%NAME%'
+    name: '%NAME%'
+    unattended_install: true
+    supported_architectures:
+      - '%ARCHITECTURE%'
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: '%pathname%'
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
