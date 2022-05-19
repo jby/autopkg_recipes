@@ -10,7 +10,9 @@ Input:
     catalogs:
     - testing
     - production
-    description: ' '
+    description: Mattermost: Open Source, Private Cloud Slack Alternative
+        This recipe requires the parent com.github.peshay.download.Mattermost recipe
+        To add the repo for that: autopkg repo-add peshay-recipes
     developer: Mattermost, Inc.
     display_name: Mattermost
     name: '%NAME%'
