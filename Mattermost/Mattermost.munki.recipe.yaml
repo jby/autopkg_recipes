@@ -1,3 +1,6 @@
+# This recipe requires the parent com.github.peshay.download.Mattermost recipe
+# To add the repo for that: autopkg repo-add peshay-recipes
+
 Identifier: local.munki.Mattermost
 Input:
   MUNKI_REPO_SUBDIR: apps/%NAME%
