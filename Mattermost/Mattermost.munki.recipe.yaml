@@ -1,0 +1,27 @@
+Identifier: local.munki.Mattermost
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: Mattermost
+  os: mac-universal
+  pkginfo:
+    catalogs:
+    - testing
+    - production
+    description: ' '
+    developer: Mattermost, Inc.
+    display_name: Mattermost
+    name: '%NAME%'
+    supported_architectures:
+    - x86_64
+    - arm64
+    unattended_install: true
+ParentRecipe: com.github.jby-recipes.munki.Mattermost
+ParentRecipeTrustInfo:
+  non_core_processors: {}
+  parent_recipes:
+    com.github.jby-recipes.munki.Mattermost:
+      path: ~/Library/AutoPkg/RecipeRepos/com.github.jby.autopkg_recipes/Mattermost/Mattermost.munki.recipe
+      sha256_hash: b007c52685cbb5050d91ca0b02a9cdd155b82e16f4b4a0985a2e24133f56cce4
+    com.github.peshay.download.Mattermost:
+      path: ~/Library/AutoPkg/RecipeRepos/com.github.jby.autopkg_recipes/Mattermost/Mattermost.download.recipe
+      sha256_hash: b66beb06a38d20e572da385c41cb94ae60e838931b8a1c1747916f6d835efd3e
