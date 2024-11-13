@@ -1,0 +1,26 @@
+Comment: Created with Recipe Robot v2.3.1 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of WezTerm and imports it into Munki.
+Identifier: com.github.jby-recipes.munki.WezTerm
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: WezTerm
+  pkginfo:
+    catalogs:
+    - testing
+    description: A GPU-accelerated cross-platform terminal emulator and multiplexer
+      written by @wez and implemented in Rust
+    developer: Wesley FURLONG
+    display_name: WezTerm
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.jby-recipes.download.WezTerm
+Process:
+- Arguments:
+    dmg_path: '%RECIPE_CACHE_DIR%/%NAME%.dmg'
+    dmg_root: '%RECIPE_CACHE_DIR%/%NAME%'
+  Processor: DmgCreator
+- Arguments:
+    pkg_path: '%dmg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter
